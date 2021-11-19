@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: todo-deployment
+  namespace: todo
   labels:
     app: todo
 spec:
@@ -19,3 +20,17 @@ spec:
         image: 230273005112.dkr.ecr.eu-central-1.amazonaws.com/to-do-app:v1
         ports:
         - containerPort: 80
+          name: web
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /
+            port: web
+          initialDelaySeconds: 60
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: web
+          initialDelaySeconds: 60
+          periodSeconds: 3
