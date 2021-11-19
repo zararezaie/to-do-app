@@ -5,6 +5,8 @@ metadata:
   namespace: todo
   labels:
     app: todo
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-security-groups: "sg-089be4069e5d73aab"
 spec:
   type: LoadBalancer
   selector:
