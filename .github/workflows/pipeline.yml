@@ -5,7 +5,7 @@ on:
     branches:
       - main
 env:
-  RELEASE_REVISION: "${{ github.event.push.head.sha }}"
+  RELEASE_REVISION: "${{ github.event.push.head_commit.id }}"
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_REGION: ${{ secrets.AWS_REGION }}
